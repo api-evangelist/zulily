@@ -1,0 +1,8 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.zulily.com/llms.txt
+skills:
+  - file: zulily-agent-shopping.md
+    name: Shop Zulily as an agent (UCP)
+    api: mcp/zulily-mcp.yml
+    operations: [search_catalog, create_cart, create_checkout, update_checkout, complete_checkout]

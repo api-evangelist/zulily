@@ -1,0 +1,22 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.zulily.com/.well-known/
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: /.well-known/oauth-authorization-server (RFC 8414) advertises authorization_code + refresh_token + jwt-bearer grants
+  - id: oidc
+    conforms: true
+    evidence: /.well-known/openid-configuration advertises OpenID Connect discovery, RS256 id_token, standard claims
+  - id: rfc8414-oauth-as-metadata
+    conforms: true
+    evidence: /.well-known/oauth-authorization-server returns 200 with issuer/token/authorization endpoints
+  - id: pkce-rfc7636
+    conforms: true
+    evidence: code_challenge_methods_supported includes S256
+  - id: ucp-universal-commerce-protocol
+    conforms: true
+    evidence: /.well-known/ucp advertises UCP versions 2026-04-08 and 2026-01-23 with a JSON-RPC MCP shopping endpoint
+  - id: mcp-model-context-protocol
+    conforms: true
+    evidence: UCP shopping service exposed over MCP transport at /api/ucp/mcp

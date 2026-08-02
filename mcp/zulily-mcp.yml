@@ -1,0 +1,44 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: https://www.zulily.com/llms.txt
+server:
+  name: zulily-ucp-shopping
+  protocol: Universal Commerce Protocol (UCP)
+  ucp_versions: ['2026-04-08', '2026-01-23']
+  transport: http
+  url: https://www.zulily.com/api/ucp/mcp
+  method: POST
+  content_type: application/json
+  discovery: https://www.zulily.com/.well-known/ucp
+  platform: Shopify (store lyons-group.myshopify.com)
+  schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+  notes: >-
+    Discovered via /llms.txt and /.well-known/ucp. Live JSON-RPC endpoint; tools/list requires a
+    valid UCP agent profile URI (returns error code -32001 "UCP discovery failed" without one).
+    Checkout requires contemporaneous human buyer approval; endpoint is rate-limited per IP (back off on 429).
+# Tool surface documented in the UCP agent flow (llms.txt) and UCP shopping capabilities.
+tools:
+  - name: search_catalog
+    description: Find products matching the buyer's intent (dev.ucp.shopping.catalog.search)
+  - name: create_cart
+    description: Create a cart and add desired items (dev.ucp.shopping.cart)
+  - name: create_checkout
+    description: Start the purchase flow (dev.ucp.shopping.checkout)
+  - name: update_checkout
+    description: Set shipping address and method (dev.ucp.shopping.fulfillment)
+  - name: complete_checkout
+    description: Finalize the purchase — buyer must approve payment (dev.ucp.shopping.checkout)
+capabilities:
+  - dev.ucp.shopping.checkout
+  - dev.ucp.shopping.fulfillment
+  - dev.ucp.shopping.discount
+  - dev.ucp.shopping.cart
+  - dev.ucp.shopping.order
+  - dev.ucp.shopping.catalog.search
+  - dev.ucp.shopping.catalog.lookup
+  - dev.shopify.catalog
+payment_handlers:
+  - com.google.pay
+  - dev.shopify.card
+  - dev.shopify.shop_pay

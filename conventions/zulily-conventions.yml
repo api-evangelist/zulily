@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.zulily.com/llms.txt
+authentication:
+  style: OAuth 2.0 / OpenID Connect (Shopify Customer Account API), authorization-code + PKCE (S256)
+  ref: authentication/zulily-authentication.yml
+agent_commerce:
+  protocol: Universal Commerce Protocol (UCP)
+  discovery: GET https://www.zulily.com/.well-known/ucp
+  mcp_endpoint: POST https://www.zulily.com/api/ucp/mcp
+  flow: [search_catalog, create_cart, create_checkout, update_checkout, complete_checkout]
+  buyer_approval: Checkout requires contemporaneous human buyer approval; agents must not complete payment without explicit consent
+  buyer_context: Pass context.address_country and context.currency for accurate pricing and availability
+rate_limiting:
+  signal: MCP endpoint rate-limited per IP; back off on HTTP 429 responses
+  documented: true
+read_only_browsing:
+  auth_required: false
+  endpoints:
+    - GET /collections/all
+    - GET /products/{handle}
+    - GET /products/{handle}.json
+    - GET /collections/{handle}
+    - GET /collections/{handle}/products.json
+    - GET /search?q={query}&type=product
+    - GET /sitemap.xml
+idempotency:
+  documented: false
+  note: No idempotency-key contract published for the UCP/MCP surface as of this pass
+versioning:
+  scheme: dated UCP protocol versions
+  current: '2026-04-08'
+  supported: ['2026-04-08', '2026-01-23']
+notes: >-
+  Cross-cutting semantics for Zulily's agent-native commerce surface, captured from /llms.txt and
+  /.well-known/ucp. The recommended path for buy-for-me agents is the Shop skill (https://shop.app/SKILL.md)
+  routed through Shop Pay, preserving the buyer-approval invariant on every payment.

@@ -1,8 +1,14 @@
 aid: zulily
 name: Zulily
-description: Zulily is a company surfaced as a portfolio company of a16z, trinity-ventures and added to
-  the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Zulily is an online retailer of daily deals on apparel, home, toys, and lifestyle goods. After
+  its 2023 shutdown the brand was acquired and relaunched as a Shopify-hosted store. The relaunched
+  storefront is agent-native: it implements the Universal Commerce Protocol (UCP) with a JSON-RPC
+  MCP shopping endpoint, exposes OpenID Connect / OAuth 2.0 authentication via the Shopify Customer
+  Account API (including a customer-account-mcp-api scope), and publishes an llms.txt / agents.md
+  describing how AI shopping agents can discover products and run buyer-approved checkouts. This
+  profile was surfaced as an a16z / Trinity Ventures portfolio company and enriched from Zulily's
+  real public agent-commerce surface.
 url: https://raw.githubusercontent.com/api-evangelist/zulily/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,12 +17,93 @@ x-backed-by:
 - trinity-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
+image: https://www.zulily.com/favicon.ico
 tags:
 - Company
-apis: []
+- Ecommerce
+- Retail
+- Shopping
+- Commerce
+- Agent Commerce
+- Universal Commerce Protocol
+- MCP
+- Shopify
+apis:
+- name: Zulily UCP Shopping (MCP)
+  description: >-
+    Zulily's agent-facing commerce API implementing the Universal Commerce Protocol (UCP) over a
+    JSON-RPC MCP endpoint — search the catalog, build a cart, and run a buyer-approved checkout.
+  humanURL: https://www.zulily.com/llms.txt
+  baseURL: https://www.zulily.com/api/ucp/mcp
+  tags:
+  - Commerce
+  - MCP
+  - UCP
+  - Agent Commerce
+  properties:
+  - type: MCPServer
+    url: mcp/zulily-mcp.yml
+  - type: WellKnown
+    url: well-known/zulily-well-known.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+- name: Zulily Customer Account API (Shopify)
+  description: >-
+    OpenID Connect / OAuth 2.0 authentication and customer-account access for Zulily shoppers,
+    provided by the Shopify Customer Account API, including an MCP-scoped agent surface.
+  humanURL: https://shopify.dev/docs/api/customer
+  baseURL: https://account.zulily.com/authentication
+  tags:
+  - Authentication
+  - OAuth
+  - OpenID Connect
+  properties:
+  - type: Authentication
+    url: authentication/zulily-authentication.yml
+  - type: OAuthScopes
+    url: scopes/zulily-scopes.yml
+common:
+- type: Website
+  url: https://www.zulily.com
+- type: LLMsTxt
+  url: llms/zulily-llms.txt
+- type: WellKnown
+  url: well-known/zulily-well-known.yml
+- type: SecurityTxt
+  url: llms/zulily-agents.md
+- type: MCPServer
+  url: mcp/zulily-mcp.yml
+- type: Authentication
+  url: authentication/zulily-authentication.yml
+- type: OAuthScopes
+  url: scopes/zulily-scopes.yml
+- type: Conformance
+  url: conformance/zulily-conformance.yml
+- type: Conventions
+  url: conventions/zulily-conventions.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DomainSecurity
+  url: security/zulily-domain-security.yml
+- type: PrivacyPolicy
+  url: https://www.zulily.com/policies/privacy-policy
+- type: TermsOfService
+  url: https://www.zulily.com/policies/terms-of-service
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

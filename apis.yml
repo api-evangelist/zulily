@@ -98,8 +98,6 @@ common:
   url: conventions/zulily-conventions.yml
 - type: AgentSkill
   url: skills/_index.yml
-- type: DomainSecurity
-  url: security/zulily-domain-security.yml
 - type: PrivacyPolicy
   url: https://www.zulily.com/policies/privacy-policy
 - type: TermsOfService

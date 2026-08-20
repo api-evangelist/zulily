@@ -35,6 +35,16 @@ modified: '2026-07-21'
 image: https://www.zulily.com/favicon.ico
 tags:
 - Company
+- E-Commerce
+- Retail
+- Shopping
+- Commerce
+- Agent Commerce
+- Universal Commerce Protocol
+- MCP
+- Shopify
+tags_raw:
+- Company
 - Ecommerce
 - Retail
 - Shopping
@@ -69,6 +79,9 @@ apis:
   humanURL: https://shopify.dev/docs/api/customer
   baseURL: https://account.zulily.com/authentication
   tags:
+  - Authentication
+  - OpenID Connect
+  tags_raw:
   - Authentication
   - OAuth
   - OpenID Connect

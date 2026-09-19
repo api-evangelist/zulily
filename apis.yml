@@ -50,7 +50,7 @@ tags:
 - Retail
 - Shopping
 - Commerce
-- Agent Commerce
+- Agentic Commerce
 - Universal Commerce Protocol
 - MCP
 - Shopify
@@ -72,6 +72,11 @@ apis:
   humanURL: https://www.zulily.com/llms.txt
   baseURL: https://www.zulily.com/api/ucp/mcp
   tags:
+  - Commerce
+  - MCP
+  - Universal Commerce Protocol
+  - Agentic Commerce
+  tags_raw:
   - Commerce
   - MCP
   - UCP

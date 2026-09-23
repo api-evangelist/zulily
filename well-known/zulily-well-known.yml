@@ -2,7 +2,9 @@ generated: '2026-07-21'
 method: searched
 source: https://www.zulily.com/.well-known/
 host: https://www.zulily.com
-documents:
+hosts:
+- host: https://www.zulily.com
+  documents:
   - path: /.well-known/openid-configuration
     status: 200
     file: zulily-openid-configuration.json
@@ -14,10 +16,16 @@ documents:
   - path: /.well-known/ucp
     status: 200
     file: zulily-ucp.json
-    note: Universal Commerce Protocol (UCP) merchant profile — supported versions, services, capabilities, payment handlers
+    note: Universal Commerce Protocol (UCP) merchant profile — supported versions, services, capabilities,
+      payment handlers
   - path: /.well-known/security.txt
     status: 404
   - path: /.well-known/api-catalog
     status: 404
   - path: /.well-known/ai-plugin.json
     status: 404
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads. A served
+    .well-known surface recorded in any other shape scores as absent.

@@ -88,6 +88,9 @@ apis:
     url: well-known/zulily-well-known.yml
   - type: AgentSkill
     url: skills/_index.yml
+  x-surface: platform-generated
+  x-platform: shopify
+  x-platform-surface: ucp
 - name: Zulily Customer Account API (Shopify)
   description: >-
     OpenID Connect / OAuth 2.0 authentication and customer-account access for Zulily shoppers,
@@ -106,6 +109,9 @@ apis:
     url: authentication/zulily-authentication.yml
   - type: OAuthScopes
     url: scopes/zulily-scopes.yml
+  x-surface: platform-generated
+  x-platform: shopify
+  x-platform-surface: customer-account
 common:
 - type: Website
   url: https://www.zulily.com
